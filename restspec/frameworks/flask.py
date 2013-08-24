@@ -17,4 +17,7 @@ class validate_query(ValidatorDecorator):
 
 class validate_payload(ValidatorDecorator):
     def object(self):
-        return request.json()
+        if isinstance(request.json, dict):
+            return request.json
+        else:
+            return request.json()
